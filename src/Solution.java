@@ -6,14 +6,16 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in); // Сканер для ввода данных с клавиатуры
-        System.out.println("Введите выражение над которым вы хотите произвести математическую операцию в одну строку через пробел");
+        System.out.println("Hey! Введите выражение над которым вы хотите произвести математическую операцию");
+        System.out.println("Каждый введенный знак должен быть записан через проблем");
+        System.out.println("Пример ввода: \"2 + 2\" или \" II + II\" ");
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in)); // читаем входящую строку и записывает в буфер
         String a, znak, b;
-        String[] array = bufferedReader.readLine().split(" ");
-        a = array[0];
-        znak = array[1];
-        b = array[2];
+        String[] array = bufferedReader.readLine().split(" "); // Передаем в массив входящую строку используя разделитель
+        a = array[0]; //Первое число в массиве
+        znak = array[1]; // Знак математической операции
+        b = array[2]; // Второе число в массиве
 
         ArabNumber arabNumbers = new ArabNumber(); // класс для арабских цифр
         RimNumber rimNumbers = new RimNumber(); // класс для римских цифр
@@ -37,7 +39,7 @@ public class Solution {
         {
             first = firstArab;
             second = secondArab;
-            //arab++;
+            arab++;
         }
         else if (firstRim > 0 && secondRim > 0 && firstRim <= 10 && secondRim <= 10) // проверка для римских цифр
         {
@@ -48,11 +50,13 @@ public class Solution {
         else
         {
            System.out.println("Введённое число выходит за границы возможности программы");
-            arab++; // Для вывода ответа arab должна быть = 0.
-          // return;
+           System.out.println("Пожалуйста, повторите ввод используя указанный диапазон числен");
+            arab--; // Для вывода ответа arab должна быть = 1.
+            rim--; // Для вывода ответа rim должна быть = 1.
+
         }
 // выполнение математической операции
-        try{ // выбрасывает исключение в случае отрицательного числа
+
         switch (znak) {
             case "+":
                 operation = first + second;
@@ -68,24 +72,18 @@ public class Solution {
                 break;
             default:{
                 System.out.println("Арифметическая операция не может быть выполнена. Повторите ввод.");
-                arab++;}
-                //rim--;
+                }
         }
-        }
-        catch (Exception e)
-        {
-            System.out.println("В римской системе исчисления нет отрицательных чисел. повторите попытку");
-        }
+
 // Вывод
-        if (rim != 0)
+        if (rim == 1)
         {
             System.out.println("Результат вычисления римских цифр " + operationToRim.resultOperationToRim(operation));
         }
-        else if (arab == 0)
+        else if (arab == 1)
         {
             System.out.println("Результат вычисления арабских цифр: " + operation);
         }
 
     }
 }
-

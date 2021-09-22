@@ -1,26 +1,26 @@
 class OperationToRim{
 
-    public static String resultOperationToRim (int res) // публичный статический метод. Должно возвр. String, передаем int.
+    public static String resultOperationToRim (int res) // Публичный статический метод. Должно возвр. String, передаем int.
     {
         int resultRim = res;
         String result = operationToRim(resultRim);
         return result;
 
     }
-    private static String operationToRim (int x) // приватный статический метод. возврат String, передает int.
+    private static String operationToRim (int x) // Приватный статический метод. возврат String, передает int.
     {
     String resultMet; // null. Её возвращаем
-        String pars = Integer.toString(x); // представление десятичного числа
-        char[] str = pars.toCharArray(); // делаем из строки массив чаров
+        String pars = Integer.toString(x); // Представление десятичного числа. Метод возвращает строковый объект определенного целочисленного значения.
+        char[] str = pars.toCharArray(); // Преобразует данную строку в новый массив символов. Делаем из строки массив чаров
         String x1 = null; // Счётчик для первого "числа"
         String x2 = null; // Счётчик для второго "числа"
 
 // Логика такова. Проверяем длину строки и из неё "собираем" ответ на основании массива чаров. Для [0] "первое" число
-// Для [1] "второе" число. Максимум что мы можем получить - 100 (10*10) согласно условию ввода. Сумма строк есть результат.
+// Для [1] "второе" число. Максимум, что мы можем получить - [3], т.к. 100 (10*10) согласно условию ввода. Сумма строк есть результат.
 
         if (str.length == 0) // если длина массива = 0
         {
-            System.out.println("Критическая ошибка");
+            System.out.println("Критическая ошибка"); // Никогда не выкинется, но пусть будет)
         }
         if (str.length == 1) // если длина массива = 1
         {
